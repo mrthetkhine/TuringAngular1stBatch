@@ -1,6 +1,11 @@
 class Base {
   greet() {
     console.log("Hello, world!");
+    this.something();
+  }
+  something()
+  {
+    console.log("Basse something");
   }
 }
  
@@ -13,6 +18,11 @@ class Derived extends Base {
       console.log(`Hello, ${name.toUpperCase()}`);
     }
   }
+  something()
+  {
+    console.log("Derived something");
+  }
+  
 }
 let b = new Derived();
-b.greet("Woo");
+b.greet();
