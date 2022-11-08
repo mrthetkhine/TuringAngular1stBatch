@@ -1,25 +1,24 @@
-var NonGenStack = /** @class */ (function () {
-    function NonGenStack() {
+"use strict";
+class NonGenStack {
+    constructor() {
         this.items = [];
     }
-    return NonGenStack;
-}());
-var GenStack = /** @class */ (function () {
-    function GenStack() {
+}
+class GenStack {
+    constructor() {
         this.items = [];
     }
-    GenStack.prototype.push = function (element) {
+    push(element) {
         this.items.push(element);
-    };
-    GenStack.prototype.pop = function () {
+    }
+    pop() {
         return this.items.pop();
-    };
-    return GenStack;
-}());
-var numStack = new GenStack();
+    }
+}
+let numStack = new GenStack();
 numStack.push(10);
 //numStack.push("100");
-var strStack = new GenStack();
+let strStack = new GenStack();
 strStack.push("Hello");
 strStack.push("One");
 console.log("Pop ", strStack.pop());
