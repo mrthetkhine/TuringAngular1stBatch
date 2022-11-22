@@ -1,0 +1,19 @@
+<html>
+    <script>
+       "use strict";
+        const person = {
+            age: 37,
+            getAge: (str, secondPar)=> {
+                //console.log('This ',this);
+                console.log('Second par ',secondPar);
+                return str+this.age; // this points to the instance (person)
+            }
+        };
+        console.log('Person.getAge ',person.getAge('My Age is ','Hello'));
+        let another = {
+            age : 20
+        }
+        let ageFunc = person.getAge;
+       console.log('ageFunc ',ageFunc('Fist ','Second'));
+    </script>
+</html>

@@ -1,0 +1,24 @@
+<html>
+    <script>
+       
+        const person = {
+            age: 37,
+            getAge: function(str, secondPar) {
+                console.log('Second par ',secondPar);
+                return str+this.age; // this points to the instance (person)
+            }
+        };
+        console.log('Person.getAge ',person.getAge('My Age is ','Hello'));
+        let another = {
+            age : 20
+        }
+        let ageFunc = person.getAge;
+        let fun = person.getAge.bind(another);
+        console.log('Person.getAge ',ageFunc.call(another,' Another age','Hello'));
+        console.log('Person.getAge ',ageFunc.apply(another,[' Another age','Hello']));
+
+        let arr = [10,-20,100,30];
+        console.log("Max ",Math.max.apply(Math,arr));
+        console.log('Bind get age ',fun('Bind with bind','Second parameter'));
+    </script>
+</html>

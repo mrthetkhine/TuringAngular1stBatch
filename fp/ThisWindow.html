@@ -1,0 +1,20 @@
+<html>
+    <script>
+        function hello()
+        {
+            "use strict";
+            console.log('This == window', this==window);
+        }
+        hello();
+        console.log("this == window ", this== window);
+        window.hello();
+        this.hello();
+        const person = {
+            age: 37,
+            getAge: function() {
+                return this.age; // this points to the instance (person)
+            }
+        };
+        console.log('Person.getAge ',person.getAge());
+    </script>
+</html>
