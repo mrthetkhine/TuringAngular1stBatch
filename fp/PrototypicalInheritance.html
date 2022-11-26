@@ -1,0 +1,48 @@
+<html>
+    <script>
+       
+       function extend(child,parent)
+       {
+        for(let p in parent)
+        {
+            child[p] = parent[p]
+        }
+       }
+        const parent = {
+            age: 37,
+            arr : [10,20],
+            method()
+            {
+                console.log('I am parent');
+            }
+        };
+        console.log('Parent ',parent);
+        const child1 = Object.create(parent,{
+            name : {
+                value : "Child 1",
+                writable:true
+            }
+        });
+        extend(child1,parent);
+
+        console.log('Child1 ',child1);
+
+        const child2 = Object.create(parent,{
+            name : {
+                value : "Child 2",
+                writable:true
+            }
+        });
+        extend(child1,parent);
+        console.log('Child2 ',child2);
+        child2.arr.push('Something');
+        console.log('Child1 ',child1);
+        console.log('Child2 ',child2);
+
+        console.log('Child 1 .arr ',child1.arr);
+        console.log('Child 2 .arr ',child2.arr);
+        
+        console.log("Child prorotpype ",child1.__proto__.__proto__.__proto__);
+        child1.method();
+    </script>
+</html>

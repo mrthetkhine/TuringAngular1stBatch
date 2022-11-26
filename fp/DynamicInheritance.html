@@ -1,0 +1,39 @@
+<html>
+    <script>
+       
+       function Human(name)
+       {
+        this.name = name;
+        this.work = function()
+        {
+            console.log('Human work');
+        }
+       }
+       function Robot()
+       {
+        this.work = function()
+        {
+            console.log('Robot work');
+        }
+       }
+       function Doctor(speciality)
+       {
+        this.speciality = speciality;
+        this.drink = function()
+        {
+            console.log('Doctor drink');
+        }
+       }
+       Doctor.prototype = new Human('None');
+
+       let d = new Doctor();
+       console.log('D ',d);
+       d.work();
+       d.drink();
+
+       Doctor.prototype = new Robot('None');
+       let d2 = new Doctor();
+       d2.work();
+       d2.drink();
+    </script>
+</html>

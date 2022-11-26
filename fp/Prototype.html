@@ -1,0 +1,34 @@
+<html>
+    <script>
+       
+        const person = {
+            age: 37,
+            getAge(){
+               
+                return this.age; // this points to the instance (person)
+            }
+        };
+        console.log('Person ',person);
+        const another = Object.create(person);
+        another.somethingElse = "Hello";
+        console.log('Another ',another);
+        console.log('Another ',another.age);
+
+        another.age = 30;
+        console.log('Another ',another);
+
+        function Person(name,age)
+        {
+            console.log('This consturcutor',this.constructor=== Person);
+            this.name = name;
+            this.age = age;
+        }
+        Person.prototype.greet = function()
+        {
+            console.log(`My name is ${this.name} I am ${this.age} year old`);
+        }
+        let p = new Person('TK',38);
+        console.log("P ",p);
+        p.greet();
+    </script>
+</html>
