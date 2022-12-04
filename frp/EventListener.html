@@ -1,0 +1,15 @@
+<html>
+    <body>
+        <button type="button" id="btnHello">Hello</button>
+        <script>
+            let btnHello = document.getElementById("btnHello");
+
+            btnHello.addEventListener("click",()=>{
+                console.log('Listener1');
+            });
+            btnHello.addEventListener("click",()=>{
+                console.log('Listener2');
+            });
+        </script>
+    </body>
+</html>

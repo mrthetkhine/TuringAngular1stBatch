@@ -25,6 +25,7 @@ coverage
 # Dependency directory
 node_modules
 /fp/node_modules
+/frp/node_modules
 bower_components
 
 # Editors
