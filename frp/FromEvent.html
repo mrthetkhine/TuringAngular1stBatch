@@ -1,0 +1,13 @@
+<html>
+    <script src="https://unpkg.com/rxjs@^7/dist/bundles/rxjs.umd.min.js">
+
+    </script>
+    <script>
+        import { fromEvent } from "rxjs";
+        const observable = fromEvent(document, "click");
+        const subscription = observable.subscribe(
+            (value) => console.log(value)
+        );
+        subscription.unsubscribe();
+    </script>
+</html>
