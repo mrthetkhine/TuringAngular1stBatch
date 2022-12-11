@@ -1,0 +1,13 @@
+<div>
+  Movies List
+    <h3 *ngFor="let movie of movies">
+       <app-movie
+         [movie]="movie"
+         (deleteMovie)="onChildMovieDelete($event)">
+       </app-movie>
+    </h3>
+    <button type="button"
+            (click)="addMovieHandler()">
+      Add Movie
+    </button>
+</div>

@@ -1,0 +1,13 @@
+<div [class.border]="hasBorder"
+  [class]="classNames">
+  <h2 [style.backgroundColor]="bgColor"
+      [style]="navStyle">Data {{data}}</h2>
+  <button type="button"
+      (click)="onClickHandler($event)">
+    Inc
+  </button>
+  <button type="button"
+          (click)="onToggleBorderHandler()">
+    Toggle Border
+  </button>
+</div>

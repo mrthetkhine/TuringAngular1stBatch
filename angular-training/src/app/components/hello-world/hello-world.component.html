@@ -1,1 +1,8 @@
-<h1>hello-world works!</h1>
+<div class="round-container">
+  <h1>hello-world works! {{currentCustomer}}</h1>
+  <!--<img src="{{angularLogo}}">-->
+  <img [src]="angularLogo">
+  <h1 [class]="color">Color is blue</h1>
+  <button type="button" [disabled]="isUnchanged">Disabled Button</button>
+</div>
+
