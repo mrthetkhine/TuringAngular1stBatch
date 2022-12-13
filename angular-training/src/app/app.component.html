@@ -310,9 +310,31 @@
 <div class="content" role="main">
 
 
-<!--  <app-hello-world></app-hello-world>-->
-  <!--<app-event-demo></app-event-demo>-->
-  <app-list-demo></app-list-demo>
+ <!-- <app-hello-world appHighlight></app-hello-world>-->
+
+ <!-- <app-list-demo></app-list-demo>
+  <app-event-demo></app-event-demo>-->
+ <!-- <app-child-template-ref>
+
+  </app-child-template-ref>-->
+ <!-- <app-to-do-list></app-to-do-list>-->
+  <!--<app-zippy-basic>
+    <p question>
+      Is content projection cool?
+    </p>
+    <h1> This will appear in ng-content</h1>
+    <ng-template #myTemplate>
+      <div>Hello template</div>
+    </ng-template>
+
+  </app-zippy-basic>-->
+  <!--<app-show-current-date [appHighlight]="color" defaultColor="green">
+
+  </app-show-current-date>
+  <p ngNonBindable> Hello {{1+1}}</p>-->
+  <div *appUnless="condition">
+    This will show when condition is false, condition-> {{condition}}
+  </div>
 </div>
 
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->

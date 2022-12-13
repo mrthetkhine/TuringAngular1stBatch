@@ -1,0 +1,15 @@
+<div>
+  Zippy
+  <ng-content></ng-content>
+  After ng-content
+
+  <ng-content select="[question]"></ng-content>
+
+  <ng-template #myTemplate>
+    <div>Hello template</div>
+  </ng-template>
+  <div *ngIf="expanded" [id]="contentId">
+    Expanded
+    <ng-container [ngTemplateOutlet]="myTemplate"></ng-container>
+  </div>
+</div>

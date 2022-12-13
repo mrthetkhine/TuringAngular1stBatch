@@ -12,6 +12,10 @@ export class ListDemoComponent {
   {
     this.movies.push('Movie '+(this.movies.length+1));
   }
+  ngOnChanges()
+  {
+    console.log("ListDemoComponent onChange");
+  }
   onChildMovieDelete(movieName:string)
   {
     console.log("OnParent movie delete ",movieName);

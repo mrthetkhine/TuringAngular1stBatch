@@ -1,1 +1,2 @@
- ng generate component components/HelloWorld
+ng generate component components/HelloWorld
+ng generate directive directives/highlight
