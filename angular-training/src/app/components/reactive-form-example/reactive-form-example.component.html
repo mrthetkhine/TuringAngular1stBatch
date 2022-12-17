@@ -1,0 +1,41 @@
+<div>
+  <h1>Reactive Form Example:</h1>
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <p>
+      <label>User  Name Upper {{userNameInUpperCase}}:</label>
+    </p>
+
+    <p>
+      <label>First Name:</label>
+      <input type="text"
+             class="form-control"
+             formControlName="firstName">
+    </p>
+    <p>
+      <label>Password:</label>
+      <input type="password"
+             class="form-control"
+             formControlName="password">
+    </p>
+    <p>
+      <button type="submit"
+              class="btn btn-primary"
+              [disabled]="!loginForm.valid">
+        Submit
+      </button>
+      <button
+        class="btn btn-primary"
+        (click)="partialUpdate()">
+        Partial Update
+      </button>
+      <button
+        class="btn btn-primary"
+        (click)="fullUpdate()">
+        Full Update
+      </button>
+      <button
+        class="btn btn-primary"
+        (click)="reset()">Cancel</button>
+    </p>
+  </form>
+</div>

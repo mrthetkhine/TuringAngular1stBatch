@@ -1,0 +1,15 @@
+<div [ngStyle]="styleObj"
+     [ngClass]="styleClass">
+  <div  [ngSwitch]="city">
+    <div *ngSwitchCase="'ygn'">Yangon</div>
+    <div *ngSwitchCase="'mdy'">Mandalay</div>
+    <div *ngSwitchDefault>Other else</div>
+  </div>
+
+  <div *ngFor="let city of cityNames;let num = index">
+    City Name {{city }} Index {{num}}
+  </div>
+  <div *ngFor="let entry of entries;let num =index">
+    City Name {{entry[0] }} Index {{num}}
+  </div>
+</div>

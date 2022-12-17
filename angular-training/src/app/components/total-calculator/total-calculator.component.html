@@ -1,0 +1,22 @@
+
+<h1>Reactive Form Example:</h1>
+<form [formGroup]="totalForm" (ngSubmit)="onSubmit()">
+
+
+  <p>
+    <label>Price</label>
+    <input type="text"
+           class="form-control"
+           formControlName="price">
+  </p>
+  <p>
+    <label>Quantity:</label>
+    <input type="text"
+           class="form-control"
+           formControlName="quantity">
+  </p>
+  <p>
+    <label>Total:</label>
+    {{total}}
+  </p>
+</form>

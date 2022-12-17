@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import {FormsModule} from "@angular/forms";
+import {ReactiveFormsModule} from "@angular/forms";
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,6 +16,13 @@ import { ZippyBasicComponent } from './components/zippy-basic/zippy-basic.compon
 import { ShowCurrentDateComponent } from './components/show-current-date/show-current-date.component';
 import { HighlightDirective } from './directives/highlight.directive';
 import { UnlessDirective } from './directives/unless.directive';
+import { SwitchDemoComponent } from './components/switch-demo/switch-demo.component';
+import { TableChildComponent } from './components/table-child/table-child.component';
+import { TableParentComponent } from './components/table-parent/table-parent.component';
+import { TemplateDrivenFormExampleComponent } from './components/template-driven-form-example/template-driven-form-example.component';
+import { ReactiveFormExampleComponent } from './components/reactive-form-example/reactive-form-example.component';
+import { TotalCalculatorComponent } from './components/total-calculator/total-calculator.component';
+
 
 @NgModule({
   declarations: [
@@ -28,11 +37,19 @@ import { UnlessDirective } from './directives/unless.directive';
     ZippyBasicComponent,
     ShowCurrentDateComponent,
     HighlightDirective,
-    UnlessDirective
+    UnlessDirective,
+    SwitchDemoComponent,
+    TableChildComponent,
+    TableParentComponent,
+    TemplateDrivenFormExampleComponent,
+    ReactiveFormExampleComponent,
+    TotalCalculatorComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,16 @@
+<div>
+    To Do list
+  <table class="table table-striped">
+      <thead>
+        <th>Name</th>
+        <th>Other data</th>
+      </thead>
+      <tbody>
+
+        <tr app-table-child [todo]="todo" *ngFor="let todo of todos">
+
+        </tr>
+
+      </tbody>
+  </table>
+</div>
