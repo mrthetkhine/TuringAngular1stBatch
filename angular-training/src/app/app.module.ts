@@ -22,6 +22,7 @@ import { TableParentComponent } from './components/table-parent/table-parent.com
 import { TemplateDrivenFormExampleComponent } from './components/template-driven-form-example/template-driven-form-example.component';
 import { ReactiveFormExampleComponent } from './components/reactive-form-example/reactive-form-example.component';
 import { TotalCalculatorComponent } from './components/total-calculator/total-calculator.component';
+import { NewMovieComponent } from './components/new-movie/new-movie.component';
 
 
 @NgModule({
@@ -43,7 +44,8 @@ import { TotalCalculatorComponent } from './components/total-calculator/total-ca
     TableParentComponent,
     TemplateDrivenFormExampleComponent,
     ReactiveFormExampleComponent,
-    TotalCalculatorComponent
+    TotalCalculatorComponent,
+    NewMovieComponent
   ],
   imports: [
     BrowserModule,

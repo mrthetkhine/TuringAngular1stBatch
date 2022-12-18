@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {DummyMovieService} from "../../services/dummy-movie.service";
 
 @Component({
   selector: 'app-event-demo',
@@ -11,6 +12,9 @@ export class EventDemoComponent {
   data = 1;
   bgColor = "gray";
   navStyle = 'font-size: 1.2rem; color: cornflowerblue;';
+
+  constructor(movieService :DummyMovieService) {
+  }
   /*
   classNames = {
     "class-1":true,

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {DummyMovieService} from "../../services/dummy-movie.service";
 
 @Component({
   selector: 'app-list-demo',
@@ -6,8 +7,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./list-demo.component.scss']
 })
 export class ListDemoComponent {
-  movies = ["Titanic","Matrix","Jhon Wick"];
+  movies:Array<string> = [];
 
+  constructor(movieService :DummyMovieService) {
+    this.movies = movieService.getMovieList();
+  }
   addMovieHandler()
   {
     this.movies.push('Movie '+(this.movies.length+1));

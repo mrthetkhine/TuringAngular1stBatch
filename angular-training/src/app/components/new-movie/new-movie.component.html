@@ -1,0 +1,86 @@
+<div class="row g-3 align-items-center">
+  <form
+        [formGroup]="movieForm"
+        (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label for="name" class="form-label">Name</label>
+      <input type="text" class="form-control"
+             id="name"
+             formControlName="name">
+      <div *ngIf="name?.invalid && (name?.dirty || name?.touched)"
+           class="alert alert-danger">
+        <span *ngIf="name?.errors?.['required']">
+          Name required
+        </span>
+        <span *ngIf="name?.errors?.['minlength']">
+          Name length should be at least 3 in character
+        </span>
+
+        <span *ngIf="name?.errors?.['muststartwithcapital']">
+          Name must start with capital character
+        </span>
+      </div>
+
+    </div>
+
+    <div class="mb-3">
+      <label for="director" class="form-label">Driector</label>
+      <input type="text" class="form-control"
+             id="director"
+             formControlName="director">
+      <div *ngIf="form['director']?.invalid && (form['director']?.dirty || form['director']?.touched)"
+           class="alert alert-danger">
+        <span *ngIf="form['director']?.errors?.['required']">
+          Director required
+        </span>
+
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="director" class="form-label">Year</label>
+      <input type="text" class="form-control"
+             id="year"
+             formControlName="year">
+      <div *ngIf="form['year']?.invalid && (form['year']?.dirty || form['year']?.touched)"
+           class="alert alert-danger">
+        <span *ngIf="form['year']?.errors?.['required']">
+          Year required
+        </span>
+        <span *ngIf="form['year']?.errors?.['pattern']">
+          Year must be 4 digit number
+        </span>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="genre" class="form-label">Genre</label>
+      <select
+          id = "genre"
+          class="form-control"
+          formControlName="genre">
+          <option *ngFor="let genre of generes">{{genre}}</option>
+      </select>
+      <div *ngIf="form['genre']?.invalid && (form['genre']?.dirty || form['genre']?.touched)"
+           class="alert alert-danger">
+        <span *ngIf="form['genre']?.errors?.['required']">
+          Genre required
+        </span>
+
+      </div>
+    </div>
+
+
+    <div>
+      <div *ngIf="!movieForm.valid"
+           class="alert alert-danger">
+        Invalid form
+      </div>
+    </div>
+    <div>
+      <button type="submit"
+              [disabled]="!movieForm.valid"
+              class="btn btn-primary">Submit</button>
+    </div>
+  </form>
+</div>

@@ -1,12 +1,30 @@
 <div>
   <h1>Template-driven Form Example (with bi-directional data binding):</h1>
   <form #myForm="ngForm" (ngSubmit)="onSubmitTemplateBased(myForm.value)">
-    <p>
+    <div>
       <label>First Name:</label>
       <input type="text" class="form-control"
-             name="firstName1"
-             [ngModel]="user.firstName" required>
-    </p>
+             name="firstName"
+             [(ngModel)]="user.firstName"
+             #firstName="ngModel"
+             required
+             minlength="3"
+             maxlength="10">
+      <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)"
+           class="alert alert-danger">
+
+        <div *ngIf="firstName.errors?.['required']">
+          Name is required.
+        </div>
+        <div *ngIf="firstName.errors?.['minlength']">
+          Name should be at least 3 characters.
+        </div>
+        <div *ngIf="firstName.errors?.['maxlength']">
+          Max length of name should be 10 characters.
+        </div>
+
+      </div>
+    </div>
     <p>
       <label>Password:</label>
       <input type="password"
