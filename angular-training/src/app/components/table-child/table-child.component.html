@@ -1,7 +1,13 @@
 <td>
-  {{todo.text}}
+  {{todo.title}}
 </td>
 <td>
-  Another data
+  {{todo.completed}}
 </td>
-
+<td>
+  <button type="button"
+    class="btn btn-danger"
+    (click)="onDeleteClick()">
+    Delete
+  </button>
+</td>

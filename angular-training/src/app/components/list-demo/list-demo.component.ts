@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {DummyMovieService} from "../../services/dummy-movie.service";
+import {AnalyticServiceService} from "../../services/analytic-service.service";
 
 @Component({
   selector: 'app-list-demo',
@@ -9,12 +10,17 @@ import {DummyMovieService} from "../../services/dummy-movie.service";
 export class ListDemoComponent {
   movies:Array<string> = [];
 
-  constructor(movieService :DummyMovieService) {
+  constructor(movieService :DummyMovieService,
+                private analyticService:AnalyticServiceService) {
     this.movies = movieService.getMovieList();
   }
   addMovieHandler()
   {
     this.movies.push('Movie '+(this.movies.length+1));
+    this.analyticService.record({
+      eventName:'Movie add',
+      scope:'Something'
+    });
   }
   ngOnChanges()
   {

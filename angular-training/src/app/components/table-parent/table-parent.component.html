@@ -1,13 +1,23 @@
 <div>
     To Do list
+  <button type="button"
+          class="btn btn-primary"
+          (click)="addNewToDo()">
+    Add New To Do
+  </button>
   <table class="table table-striped">
       <thead>
         <th>Name</th>
-        <th>Other data</th>
+        <th>Completed</th>
+        <th>Action</th>
       </thead>
       <tbody>
 
-        <tr app-table-child [todo]="todo" *ngFor="let todo of todos">
+        <tr app-table-child
+            *ngFor="let todo of todos"
+            [todo]="todo"
+            (deleteEvent)="onToDoDeleteEvent($event)"
+            >
 
         </tr>
 

@@ -23,6 +23,13 @@ import { TemplateDrivenFormExampleComponent } from './components/template-driven
 import { ReactiveFormExampleComponent } from './components/reactive-form-example/reactive-form-example.component';
 import { TotalCalculatorComponent } from './components/total-calculator/total-calculator.component';
 import { NewMovieComponent } from './components/new-movie/new-movie.component';
+import {AnalyticServiceService} from "./services/analytic-service.service";
+import {AnalyticsImplementation} from "./analytics-implementation";
+import {Metric} from "./model/metric.model";
+import {HttpClientModule} from "@angular/common/http";
+import { ToDoCountComponent } from './components/to-do-count/to-do-count.component';
+import { FirstPageComponent } from './page/first-page/first-page.component';
+import { SecondPageComponent } from './page/second-page/second-page.component';
 
 
 @NgModule({
@@ -45,15 +52,32 @@ import { NewMovieComponent } from './components/new-movie/new-movie.component';
     TemplateDrivenFormExampleComponent,
     ReactiveFormExampleComponent,
     TotalCalculatorComponent,
-    NewMovieComponent
+    NewMovieComponent,
+    ToDoCountComponent,
+    FirstPageComponent,
+    SecondPageComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule,
+
   ],
-  providers: [],
+  providers: [
+    {
+      provide:AnalyticServiceService,
+      useFactory:function () {
+        const loggingImplementation: AnalyticsImplementation = {
+          recordEvent: (metric: Metric): void => {
+            console.log('The metric is:', metric);
+          }
+        };
+        return new AnalyticServiceService(loggingImplementation);
+      }
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

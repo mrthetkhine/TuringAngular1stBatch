@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {ToDoItem} from "../../model/to-do-item.model";
 
 @Component({
@@ -9,4 +9,12 @@ import {ToDoItem} from "../../model/to-do-item.model";
 export class TableChildComponent {
   @Input()
   todo!:ToDoItem;
+
+  @Output()
+  deleteEvent : EventEmitter<ToDoItem> = new EventEmitter<ToDoItem>();
+
+  onDeleteClick()
+  {
+    this.deleteEvent.emit(this.todo);
+  }
 }
