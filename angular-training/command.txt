@@ -2,3 +2,5 @@ ng generate component components/HelloWorld
 ng generate directive directives/highlight
 ng generate class model/ToDoItem --type=model
 ng generate service services/DummyMovie
+ng generate component page/NotFoundPage
+ng generate guard auth/auth

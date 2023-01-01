@@ -30,6 +30,13 @@ import {HttpClientModule} from "@angular/common/http";
 import { ToDoCountComponent } from './components/to-do-count/to-do-count.component';
 import { FirstPageComponent } from './page/first-page/first-page.component';
 import { SecondPageComponent } from './page/second-page/second-page.component';
+import { NotFoundPageComponent } from './page/not-found-page/not-found-page.component';
+import { ChildAPageComponent } from './page/child-apage/child-apage.component';
+import { ChildBPageComponent } from './page/child-bpage/child-bpage.component';
+import { AdminPageComponent } from './page/admin-page/admin-page.component';
+import {AuthGuard} from "./auth/auth.guard";
+import { LoginPageComponent } from './page/login-page/login-page.component';
+import { ToDoDetailPageComponent } from './page/to-do-detail-page/to-do-detail-page.component';
 
 
 @NgModule({
@@ -55,7 +62,13 @@ import { SecondPageComponent } from './page/second-page/second-page.component';
     NewMovieComponent,
     ToDoCountComponent,
     FirstPageComponent,
-    SecondPageComponent
+    SecondPageComponent,
+    NotFoundPageComponent,
+    ChildAPageComponent,
+    ChildBPageComponent,
+    AdminPageComponent,
+    LoginPageComponent,
+    ToDoDetailPageComponent
   ],
   imports: [
     BrowserModule,
@@ -76,7 +89,8 @@ import { SecondPageComponent } from './page/second-page/second-page.component';
         };
         return new AnalyticServiceService(loggingImplementation);
       }
-    }
+    },
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })

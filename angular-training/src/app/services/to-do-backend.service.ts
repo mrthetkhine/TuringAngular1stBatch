@@ -26,7 +26,10 @@ export class ToDoBackendService {
       this._todos.next(this.todoDataStore);
     });
   }
-
+ getToDoById(id:string)
+ {
+   return this.http.get<ToDoItem>(`https://jsonplaceholder.typicode.com/todos/${id}`);
+ }
   getTodos()
   {
     return this.http.get<Array<ToDoItem>>('https://jsonplaceholder.typicode.com/todos');
