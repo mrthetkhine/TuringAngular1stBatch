@@ -50,6 +50,5 @@ export class ToDoBackendService {
         this.todoDataStore.unshift(data);
         this._todos.next(this.todoDataStore);
       });
-
   }
 }

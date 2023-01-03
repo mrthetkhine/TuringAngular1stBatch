@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
+import {ToDoBackendService} from "../../services/to-do-backend.service";
 
 @Component({
   selector: 'app-first-page',
@@ -9,7 +10,12 @@ import {ActivatedRoute} from "@angular/router";
 export class FirstPageComponent {
 
   name :any ;
-  constructor( private route: ActivatedRoute) {
+  count = 0;
+  constructor(private todoBackendService :ToDoBackendService,
+              private route: ActivatedRoute) {
+    this.todoBackendService.todos.subscribe(data=>{
+      this.count = data.length;
+    });
   }
 
   ngOnInit() {
