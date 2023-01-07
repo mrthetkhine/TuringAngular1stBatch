@@ -1,0 +1,20 @@
+<div>
+  <form [formGroup]="todoForm" (ngSubmit)="onSubmit()">
+    <div>
+
+        <label>Title:</label>
+        <input type="text"
+               class="form-control"
+               formControlName="title">
+
+    </div>
+    <div>
+      <button type="submit"
+              class="btn btn-primary"
+      >
+        Add To Do
+      </button>
+    </div>
+
+  </form>
+</div>

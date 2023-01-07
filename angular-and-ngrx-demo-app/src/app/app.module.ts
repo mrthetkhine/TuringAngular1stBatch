@@ -7,16 +7,27 @@ import { StoreModule } from '@ngrx/store';
 import { counterReducer } from './features/counter/counter.reducer';
 import { CounterComponent } from './features/counter/counter/counter.component';
 import { AnotherCounterViewComponent } from './features/counter/another-counter-view/another-counter-view.component';
+import { ToDoListComponent } from './features/todolist/to-do-list/to-do-list.component';
+import {todoReducer} from './features/todolist/todo.reducer';
+import { AddToDoComponent } from './features/todolist/add-to-do/add-to-do.component';
+import {ReactiveFormsModule} from "@angular/forms";
 @NgModule({
   declarations: [
     AppComponent,
     CounterComponent,
-    AnotherCounterViewComponent
+    AnotherCounterViewComponent,
+    ToDoListComponent,
+    AddToDoComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    StoreModule.forRoot({ count: counterReducer })
+    ReactiveFormsModule,
+    StoreModule.forRoot({
+        count: counterReducer,
+        todo:todoReducer
+      },
+      )
   ],
   providers: [],
   bootstrap: [AppComponent]

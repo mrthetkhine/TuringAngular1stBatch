@@ -1,1 +1,2 @@
 ng generate component features/counter/AnotherCounterView
+ng generate class  features/todolist/ToDo --type=model
