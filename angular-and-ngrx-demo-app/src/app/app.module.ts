@@ -11,23 +11,30 @@ import { ToDoListComponent } from './features/todolist/to-do-list/to-do-list.com
 import {todoReducer} from './features/todolist/todo.reducer';
 import { AddToDoComponent } from './features/todolist/add-to-do/add-to-do.component';
 import {ReactiveFormsModule} from "@angular/forms";
+import { EffectsModule } from '@ngrx/effects';
+import {HttpClientModule} from "@angular/common/http";
+import {TodoEffects} from "./features/todolist/effects/todo.effects";
+import { CompletedTodoCountComponent } from './features/todolist/completed-todo-count/completed-todo-count.component';
 @NgModule({
   declarations: [
     AppComponent,
     CounterComponent,
     AnotherCounterViewComponent,
     ToDoListComponent,
-    AddToDoComponent
+    AddToDoComponent,
+    CompletedTodoCountComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    HttpClientModule,
     StoreModule.forRoot({
         count: counterReducer,
         todo:todoReducer
       },
-      )
+      ),
+    EffectsModule.forRoot([TodoEffects])
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,19 +1,23 @@
-import { Component } from '@angular/core';
+import {Component, TemplateRef} from '@angular/core';
 import {ToDoItem} from "../../model/to-do-item.model";
 import {ToDoBackendService} from "../../services/to-do-backend.service";
+import {BsModalRef, BsModalService} from "ngx-bootstrap/modal";
 
 @Component({
-  selector: 'app-table-parent',
-  templateUrl: './table-parent.component.html',
-  styleUrls: ['./table-parent.component.scss']
+  selector: 'app-todo-list-view',
+  templateUrl: './todo-list-view.component.html',
+  styleUrls: ['./todo-list-view.scss']
 })
-export class TableParentComponent {
+export class TodoListViewComponent {
 
   id = 201;
   todos:Array<ToDoItem> = [
   ];
-
-  constructor(private todoBackendService: ToDoBackendService)
+  closeResult = '';
+  modalRef?: BsModalRef;
+  constructor(
+    private modalService: BsModalService,
+    private todoBackendService: ToDoBackendService)
   {}
 
   ngOnInit()
@@ -28,6 +32,14 @@ export class TableParentComponent {
   {
     console.log("Delete todoitem ",todoItem);
     this.todoBackendService.deleteTodo(todoItem);
+  }
+
+  openModal(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template);
+  }
+  closeModal()
+  {
+    this.modalRef?.hide();
   }
   addNewToDo()
   {

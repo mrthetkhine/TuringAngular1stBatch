@@ -18,7 +18,7 @@ import { HighlightDirective } from './directives/highlight.directive';
 import { UnlessDirective } from './directives/unless.directive';
 import { SwitchDemoComponent } from './components/switch-demo/switch-demo.component';
 import { TableChildComponent } from './components/table-child/table-child.component';
-import { TableParentComponent } from './components/table-parent/table-parent.component';
+import { TodoListViewComponent } from './components/todo-list-view/todo-list-view.component';
 import { TemplateDrivenFormExampleComponent } from './components/template-driven-form-example/template-driven-form-example.component';
 import { ReactiveFormExampleComponent } from './components/reactive-form-example/reactive-form-example.component';
 import { TotalCalculatorComponent } from './components/total-calculator/total-calculator.component';
@@ -37,7 +37,7 @@ import { AdminPageComponent } from './page/admin-page/admin-page.component';
 import {AuthGuard} from "./auth/auth.guard";
 import { LoginPageComponent } from './page/login-page/login-page.component';
 import { ToDoDetailPageComponent } from './page/to-do-detail-page/to-do-detail-page.component';
-
+import {ModalModule} from "ngx-bootstrap/modal";
 
 @NgModule({
   declarations: [
@@ -55,7 +55,7 @@ import { ToDoDetailPageComponent } from './page/to-do-detail-page/to-do-detail-p
     UnlessDirective,
     SwitchDemoComponent,
     TableChildComponent,
-    TableParentComponent,
+    TodoListViewComponent,
     TemplateDrivenFormExampleComponent,
     ReactiveFormExampleComponent,
     TotalCalculatorComponent,
@@ -76,7 +76,7 @@ import { ToDoDetailPageComponent } from './page/to-do-detail-page/to-do-detail-p
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-
+    ModalModule.forRoot(),
   ],
   providers: [
     {

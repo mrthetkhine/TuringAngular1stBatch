@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TableParentComponent } from './table-parent.component';
+import { TodoListViewComponent } from './todo-list-view.component';
 
 describe('TableParentComponent', () => {
-  let component: TableParentComponent;
-  let fixture: ComponentFixture<TableParentComponent>;
+  let component: TodoListViewComponent;
+  let fixture: ComponentFixture<TodoListViewComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TableParentComponent ]
+      declarations: [ TodoListViewComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(TableParentComponent);
+    fixture = TestBed.createComponent(TodoListViewComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
