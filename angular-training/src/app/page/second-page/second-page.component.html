@@ -1,4 +1,110 @@
 <p>second-page works!
   <app-to-do-count></app-to-do-count>
-  <app-todo-list-view></app-todo-list-view>
+  <!-- ToDo Input Dialog -->
+  <button type="button" class="btn btn-primary" (click)="showNewToDoModal()">
+    New ToDO
+  </button>
+
+  <ng-template #template>
+<form [formGroup]="todoForm" (ngSubmit)="onSubmit()">
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">{{editMode?'Edit ToDo':'New ToDo'}}</h4>
+    <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+      <span aria-hidden="true" class="visually-hidden">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+
+    <div class="form-group">
+      <label for="todoId">ToDo Id</label>
+      <input type="text"
+             class="form-control"
+             id="todoId"
+             formControlName="id"
+             [readOnly]="editMode"
+             placeholder="Enter todo Id">
+      <div *ngIf="form['id'].invalid && (form['id'].dirty || form['id'].touched)"
+           class="alert alert-danger">
+        <span *ngIf="form['id']?.errors?.['required']">
+          Id required
+        </span>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="todoUserId">ToDo User Id</label>
+      <input type="text"
+             class="form-control"
+             id="todoUserId"
+             formControlName="userId"
+             placeholder="Enter todo userId">
+      <div *ngIf="form['userId'].invalid && (form['userId'].dirty || form['userId'].touched)"
+           class="alert alert-danger">
+        <span *ngIf="form['userId']?.errors?.['required']">
+          UserId required
+        </span>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="todoTitle">ToDo title</label>
+      <input type="text"
+             class="form-control"
+             id="todoTitle"
+             formControlName="title"
+             placeholder="Enter todo title">
+      <div *ngIf="form['title'].invalid && (form['title'].dirty || form['title'].touched)"
+           class="alert alert-danger">
+        <span *ngIf="form['title']?.errors?.['required']">
+          Title required
+        </span>
+      </div>
+    </div>
+    <div class="form-group">
+      <label >Completed?</label>
+      <div class="form-check">
+        <input class="form-check-input"
+               formControlName="completed"
+               type="radio"
+               [value]=false>
+        <label class="form-check-label">
+          Not Completed
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input"
+               formControlName="completed"
+               type="radio"
+               [value]=true>
+        <label class="form-check-label" >
+          Completed
+        </label>
+      </div>
+      <div *ngIf="form['completed'].invalid && (form['completed'].dirty || form['completed'].touched)"
+           class="alert alert-danger">
+        <span *ngIf="form['completed']?.errors?.['required']">
+          Completed required
+        </span>
+      </div>
+    </div>
+
+
+  </div>
+  <div class="modal-footer">
+    <div>
+      <button type="submit"
+              [disabled]="!todoForm.valid"
+              class="btn btn-primary" >
+        {{editMode?'Update':'Save'}}
+      </button>
+      &nbsp;
+      <button type="button" class="btn btn-primary" (click)="closeModal()">Close</button>
+    </div>
+  </div>
+</form>
+</ng-template>
+<!-- -->
+  <app-todo-list-view (editEvent)="onToDoEditHandler($event)">
+
+  </app-todo-list-view>
 </p>

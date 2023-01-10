@@ -14,7 +14,13 @@ export class TableChildComponent {
   @Output()
   deleteEvent : EventEmitter<ToDoItem> = new EventEmitter<ToDoItem>();
 
+  @Output()
+  editEvent : EventEmitter<ToDoItem> = new EventEmitter<ToDoItem>();
   constructor(private router : Router) {
+  }
+  onEditClick()
+  {
+    this.editEvent.emit(this.todo);
   }
   onDeleteClick()
   {

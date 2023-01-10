@@ -1,7 +1,8 @@
-import {Component, TemplateRef} from '@angular/core';
+import {Component, EventEmitter, Output, TemplateRef} from '@angular/core';
 import {ToDoItem} from "../../model/to-do-item.model";
 import {ToDoBackendService} from "../../services/to-do-backend.service";
 import {BsModalRef, BsModalService} from "ngx-bootstrap/modal";
+import {FormBuilder, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-todo-list-view',
@@ -13,12 +14,13 @@ export class TodoListViewComponent {
   id = 201;
   todos:Array<ToDoItem> = [
   ];
-  closeResult = '';
-  modalRef?: BsModalRef;
+  @Output()
+  editEvent : EventEmitter<ToDoItem> = new EventEmitter<ToDoItem>();
   constructor(
-    private modalService: BsModalService,
     private todoBackendService: ToDoBackendService)
-  {}
+  {
+
+  }
 
   ngOnInit()
   {
@@ -33,14 +35,12 @@ export class TodoListViewComponent {
     console.log("Delete todoitem ",todoItem);
     this.todoBackendService.deleteTodo(todoItem);
   }
-
-  openModal(template: TemplateRef<any>) {
-    this.modalRef = this.modalService.show(template);
-  }
-  closeModal()
+  onToDoEditEvent(todoItem:ToDoItem)
   {
-    this.modalRef?.hide();
+    console.log("Edit todoitem ",todoItem);
+    this.editEvent.emit(todoItem);
   }
+
   addNewToDo()
   {
     let todo = {
@@ -51,4 +51,5 @@ export class TodoListViewComponent {
     };
     this.todoBackendService.addNewToDo(todo);
   }
+
 }

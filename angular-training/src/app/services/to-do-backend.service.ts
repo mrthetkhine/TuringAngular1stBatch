@@ -43,6 +43,15 @@ export class ToDoBackendService {
       });
 
   }
+  editToDo(item:ToDoItem)
+  {
+    return this.http.put<ToDoItem>('https://jsonplaceholder.typicode.com/todos/'+item.id,item)
+      .subscribe(data=>{
+        this.todoDataStore = this.todoDataStore.map(ele=>ele.id === item.id?item:ele);
+        this._todos.next(this.todoDataStore);
+      });
+
+  }
   addNewToDo(item:ToDoItem)
   {
     return this.http.post<ToDoItem>('https://jsonplaceholder.typicode.com/todos',item)
