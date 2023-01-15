@@ -1,1 +1,4 @@
 nest g resource ToDo
+nest g controller Host
+nest g middleware Logger
+nest g filter HttpException
