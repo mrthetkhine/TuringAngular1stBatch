@@ -2,3 +2,6 @@ nest g resource ToDo
 nest g controller Host
 nest g middleware Logger
 nest g filter HttpException
+nest g pipe pipes/JoiValidation
+nest g guard Auth
+nest g itc Logging

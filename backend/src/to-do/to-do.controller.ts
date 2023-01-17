@@ -11,15 +11,22 @@ import {
   HostParam,
   Headers,
   Ip,
-  HttpCode, Header, Redirect, HttpException, HttpStatus, UseFilters, ParseIntPipe,
+  HttpCode, Header, Redirect, HttpException, HttpStatus, UseFilters, ParseIntPipe, UsePipes, UseGuards, UseInterceptors,
 } from '@nestjs/common';
 import { Request } from 'express';
 import { ToDoService } from './to-do.service';
-import { CreateToDoDto } from './dto/create-to-do.dto';
+import { CreateToDoDto, CreateToDoSchema } from './dto/create-to-do.dto';
 import { UpdateToDoDto } from './dto/update-to-do.dto';
 import { QueryToDoDto } from './dto/query-to-do.dto';
 import { HttpExceptionFilter } from '../http-exception/http-exception.filter';
+import { JoiValidationPipe } from '../pipes/joi-validation/joi-validation.pipe';
+import { DtoValidationPipe } from '../pipes/dto-validation/dto-validation.pipe';
+import { AuthGuard } from '../auth/auth.guard';
+import { LoggingInterceptor } from '../logging/logging.interceptor';
+import { ToDoDecorator } from './to-do.decorator';
 
+@UseInterceptors(LoggingInterceptor)
+//@UseGuards(AuthGuard)
 //@UseFilters(new HttpExceptionFilter())
 @Controller('to-do')
 export class ToDoController {
@@ -28,12 +35,14 @@ export class ToDoController {
   @Post()
   //@HttpCode(204)
   @Header('Cache-Control', 'none')
-  create(@Body() createToDoDto: CreateToDoDto) {
+  //@UsePipes(new JoiValidationPipe(CreateToDoSchema))
+  create(@Body(new DtoValidationPipe()) createToDoDto: CreateToDoDto) {
     return this.toDoService.create(createToDoDto);
   }
 
   @Get('ab*cd')
-  wildcard(){
+  wildcard(@ToDoDecorator() todo:any){
+    console.log('Wildcard todo ',todo);
     return 'wildcard';
   }
 
