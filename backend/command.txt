@@ -5,3 +5,4 @@ nest g filter HttpException
 nest g pipe pipes/JoiValidation
 nest g guard Auth
 nest g itc Logging
+npm i @nestjs/mongoose mongoose

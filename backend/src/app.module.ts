@@ -7,9 +7,18 @@ import { LibSpecificController } from './lib-specific/lib-specific.controller';
 import { LoggerMiddleware } from './logger/logger.middleware';
 import { ToDoController } from './to-do/to-do.controller';
 import { loggerTwo } from './logger-two/logger-two.middleware';
+import { MongooseModule } from '@nestjs/mongoose';
+import { ToDo, ToDoSchema } from './schemas/todo.schema';
+import { ToDoService } from './to-do/to-do.service';
+import { MovieModule } from './movie/movie.module';
 
 @Module({
-  imports: [ToDoModule],
+  imports: [
+    ToDoModule,
+    MongooseModule.forRoot('mongodb://localhost/angular_1st_batch'),
+    MovieModule,
+  ],
+
   controllers: [AppController, HostController, LibSpecificController],
   providers: [AppService],
 })

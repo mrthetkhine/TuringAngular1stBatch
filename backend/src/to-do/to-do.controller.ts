@@ -28,7 +28,7 @@ import { ToDoDecorator } from './to-do.decorator';
 @UseInterceptors(LoggingInterceptor)
 //@UseGuards(AuthGuard)
 //@UseFilters(new HttpExceptionFilter())
-@Controller('to-do')
+@Controller('api/to-do')
 export class ToDoController {
   constructor(private readonly toDoService: ToDoService) {}
 
@@ -84,19 +84,24 @@ export class ToDoController {
     return this.toDoService.findAll();
   }
 
+  @Get('/completed')
+  findAllCompleted()
+  {
+    return this.toDoService.findAllCompleted();
+  }
+  //new ParseIntPipe({ errorHttpStatusCode: HttpStatus.NOT_ACCEPTABLE })
   @Get(':id')
-  findOne(@Param('id',
-    new ParseIntPipe({ errorHttpStatusCode: HttpStatus.NOT_ACCEPTABLE })) id: number) {
+  findOne(@Param('id') id:string) {
     return this.toDoService.findOne(id);
   }
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateToDoDto: UpdateToDoDto) {
-    return this.toDoService.update(+id, updateToDoDto);
+    return this.toDoService.update(id, updateToDoDto);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.toDoService.remove(+id);
+    return this.toDoService.remove(id);
   }
 }
