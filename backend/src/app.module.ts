@@ -11,6 +11,8 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { ToDo, ToDoSchema } from './schemas/todo.schema';
 import { ToDoService } from './to-do/to-do.service';
 import { MovieModule } from './movie/movie.module';
+import { ActorController } from './movie/actor/actor.controller';
+import { DirectorController } from './movie/director/director.controller';
 
 @Module({
   imports: [

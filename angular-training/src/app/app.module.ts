@@ -38,6 +38,9 @@ import {AuthGuard} from "./auth/auth.guard";
 import { LoginPageComponent } from './page/login-page/login-page.component';
 import { ToDoDetailPageComponent } from './page/to-do-detail-page/to-do-detail-page.component';
 import {ModalModule} from "ngx-bootstrap/modal";
+import { MovieListComponent } from './page/movie-list/movie-list.component';
+import { MovieTwoComponent } from './components/movie-two/movie-two.component';
+import { MovieDetailComponent } from './page/movie-detail/movie-detail.component';
 
 @NgModule({
   declarations: [
@@ -68,7 +71,10 @@ import {ModalModule} from "ngx-bootstrap/modal";
     ChildBPageComponent,
     AdminPageComponent,
     LoginPageComponent,
-    ToDoDetailPageComponent
+    ToDoDetailPageComponent,
+    MovieListComponent,
+    MovieTwoComponent,
+    MovieDetailComponent
   ],
   imports: [
     BrowserModule,

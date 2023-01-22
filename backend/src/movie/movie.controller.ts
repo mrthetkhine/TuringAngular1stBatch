@@ -19,16 +19,17 @@ export class MovieController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.movieService.findOne(+id);
+    return this.movieService.findOne(id);
   }
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateMovieDto: UpdateMovieDto) {
-    return this.movieService.update(+id, updateMovieDto);
+    console.log('UpdateMovie Dto ',updateMovieDto);
+    return this.movieService.update(id, updateMovieDto);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.movieService.remove(+id);
+    return this.movieService.remove(id);
   }
 }

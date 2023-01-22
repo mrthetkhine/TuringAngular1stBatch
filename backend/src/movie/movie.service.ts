@@ -18,18 +18,24 @@ export class MovieService {
   }
 
   async findAll() {
-    return this.movieModel.find().exec();
+    return this.movieModel
+      .find()
+      //.populate('actors')
+      //.populate('directors')
+      .exec();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} movie`;
+  async findOne(id: string) {
+    return this.movieModel.findById(id)
+      .populate('actors')
+      .populate('directors').exec();
   }
 
-  update(id: number, updateMovieDto: UpdateMovieDto) {
-    return `This action updates a #${id} movie`;
+  async update(id: string, updateMovieDto: UpdateMovieDto) {
+    return this.movieModel.findByIdAndUpdate(id,updateMovieDto,{new:true})
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} movie`;
+  async remove(id: string) {
+    return this.movieModel.findByIdAndDelete(id);
   }
 }
