@@ -41,6 +41,7 @@ import {ModalModule} from "ngx-bootstrap/modal";
 import { MovieListComponent } from './page/movie-list/movie-list.component';
 import { MovieTwoComponent } from './components/movie-two/movie-two.component';
 import { MovieDetailComponent } from './page/movie-detail/movie-detail.component';
+import { MovieDetailsComponent } from './components/movie-details/movie-details.component';
 
 @NgModule({
   declarations: [
@@ -74,7 +75,8 @@ import { MovieDetailComponent } from './page/movie-detail/movie-detail.component
     ToDoDetailPageComponent,
     MovieListComponent,
     MovieTwoComponent,
-    MovieDetailComponent
+    MovieDetailComponent,
+    MovieDetailsComponent
   ],
   imports: [
     BrowserModule,

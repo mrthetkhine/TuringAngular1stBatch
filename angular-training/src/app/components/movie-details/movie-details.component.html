@@ -1,0 +1,36 @@
+
+<div class="movie-container" >
+
+    <div *ngIf="movieDetails">
+      <div class="movie-title">
+        {{movieDetails.title}}
+      </div>
+      <div class="movie-box">
+        {{movieDetails.year}}
+      </div>
+      <div class="movie-box">
+        <div *ngFor="let genre of movieDetails.genres">
+          {{genre}}
+        </div>
+      </div>
+      <div class="movie-box">
+        <div *ngFor="let director of movieDetails.directors">
+          {{director.name}}
+        </div>
+      </div>
+      <div class="movie-box">
+        <div *ngFor="let actor of movieDetails.actors">
+          {{actor.name}}
+        </div>
+      </div>
+      <div class="movie-box">
+        <div *ngFor="let review of movieDetails.reviews">
+          {{review.review}}
+        </div>
+      </div>
+      <div>
+        <a class="btn btn-primary" routerLink="/movie-list" routerLinkActive="active" ariaCurrentWhenActive="page">Back</a>
+      </div>
+    </div>
+
+</div>

@@ -163,15 +163,9 @@
     z-index: -10;
   }
 
-  a,
-  a:visited,
-  a:hover {
-    color: #1976d2;
-    text-decoration: none;
-  }
-
-  a:hover {
-    color: #125699;
+  .nav-link
+  {
+    color:white;
   }
 
   .terminal {
@@ -305,19 +299,20 @@
 <!-- Toolbar -->
 <div class="toolbar" role="banner">
  Welcome
+  <nav >
+    <ul class="nav">
+      <li class="nav-item"><a class="nav-link" routerLink="/login-page" routerLinkActive="active" ariaCurrentWhenActive="page">Login</a></li>
+      <li class="nav-item"><a class="nav-link" routerLink="/admin-page" routerLinkActive="active" ariaCurrentWhenActive="page">Admin</a></li>
+      <li class="nav-item"><a class="nav-link" routerLink="/first-page" routerLinkActive="active" ariaCurrentWhenActive="page">First Component</a></li>
+      <li class="nav-item"><a class="nav-link" routerLink="/second-page" routerLinkActive="active" ariaCurrentWhenActive="page">To Do List Page</a></li>
+      <li class="nav-item"><a class="nav-link" routerLink="/movie-list" routerLinkActive="active" ariaCurrentWhenActive="page">Movie List</a></li>
+    </ul>
+  </nav>
 </div>
 
 <div class="content" role="main">
 
-  <nav>
-    <ul>
-      <li><a routerLink="/login-page" routerLinkActive="active" ariaCurrentWhenActive="page">Login</a></li>
-      <li><a routerLink="/admin-page" routerLinkActive="active" ariaCurrentWhenActive="page">Admin</a></li>
-      <li><a routerLink="/first-page" routerLinkActive="active" ariaCurrentWhenActive="page">First Component</a></li>
-      <li><a routerLink="/second-page" routerLinkActive="active" ariaCurrentWhenActive="page">To Do List Page</a></li>
-      <li><a routerLink="/movie-list" routerLinkActive="active" ariaCurrentWhenActive="page">Movie List</a></li>
-    </ul>
-  </nav>
+
  <!-- <app-hello-world appHighlight></app-hello-world>-->
 
  <!-- <app-list-demo></app-list-demo>-->

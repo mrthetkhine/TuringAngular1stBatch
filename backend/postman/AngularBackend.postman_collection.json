@@ -22,14 +22,37 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://localhost:3000/to-do",
-							"protocol": "http",
+							"raw": "{{url}}/to-do",
 							"host": [
-								"localhost"
+								"{{url}}"
 							],
-							"port": "3000",
 							"path": [
 								"to-do"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetAllCompletedToDos",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/to-do/completed",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"to-do",
+								"completed"
 							]
 						}
 					},
@@ -53,7 +76,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"id\":\"122\",\n    \"title\":\"task1\"\n}",
+							"raw": "{\n    \"title\":\"task 6\",\n    \"completed\":true\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -61,14 +84,50 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3000/to-do",
-							"protocol": "http",
+							"raw": "{{url}}/to-do",
 							"host": [
-								"localhost"
+								"{{url}}"
 							],
-							"port": "3000",
 							"path": [
 								"to-do"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateToDo",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer token",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\":\"task updated two\",\n    \"completed\":true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/to-do/63cbde9606b9a29ade54f561",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"to-do",
+								"63cbde9606b9a29ade54f561"
 							]
 						}
 					},
@@ -80,15 +139,31 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/to-do/dae",
-							"protocol": "http",
+							"raw": "{{url}}/to-do/63cbde9606b9a29ade54f561",
 							"host": [
-								"localhost"
+								"{{url}}"
 							],
-							"port": "3000",
 							"path": [
 								"to-do",
-								"dae"
+								"63cbde9606b9a29ade54f561"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteToDo",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/to-do/63cbde9606b9a29ade54f561",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"to-do",
+								"63cbde9606b9a29ade54f561"
 							]
 						}
 					},
@@ -111,12 +186,10 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost:3000/to-do/query?title=something",
-							"protocol": "http",
+							"raw": "{{url}}/to-do/query?title=something",
 							"host": [
-								"localhost"
+								"{{url}}"
 							],
-							"port": "3000",
 							"path": [
 								"to-do",
 								"query"
@@ -150,12 +223,10 @@
 							"raw": "{\n    \"todo\":\"Yes something\"\n}"
 						},
 						"url": {
-							"raw": "http://localhost:3000/to-do/abhellocd",
-							"protocol": "http",
+							"raw": "{{url}}/to-do/abhellocd",
 							"host": [
-								"localhost"
+								"{{url}}"
 							],
-							"port": "3000",
 							"path": [
 								"to-do",
 								"abhellocd"
@@ -192,12 +263,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/to-do/problem",
-							"protocol": "http",
+							"raw": "{{url}}/to-do/problem",
 							"host": [
-								"localhost"
+								"{{url}}"
 							],
-							"port": "3000",
 							"path": [
 								"to-do",
 								"problem"
@@ -244,6 +313,263 @@
 							"port": "3000",
 							"path": [
 								"lib-specific"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Actor",
+			"item": [
+				{
+					"name": "GetAllActor",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/actors",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"actors"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetActor",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/actors",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"actors"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreateActor",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"Test actors\",\n    \"gender\":\"Female\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/actors",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"actors"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateActor",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"Kate WinSlect\",\n    \"gender\":\"Female\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/actors/63cd2dfe39a93538253d7b8d",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"actors",
+								"63cd2dfe39a93538253d7b8d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteActor",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"Kate WinSlect\",\n    \"gender\":\"Female\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/actors/63cd318ebef0d36aaf00a395",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"actors",
+								"63cd318ebef0d36aaf00a395"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Movie",
+			"item": [
+				{
+					"name": "GetAllMovies",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/movies",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"movies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetMovie",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/movies/63cbf0e76bcbceebad5e18ad",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"movies",
+								"63cbf0e76bcbceebad5e18ad"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateMovie",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n   \n    \"title\": \"Titanic Update\",\n    \"year\": 1995,\n    \"genres\": [\n        \"Drama\"\n    ],\n    \"actors\": [\"63cd2bbf7bad73bff4219373\"],\n    \"directors\": [\"63cd34830e03eb5cbfdbbee3\"],\n    \"reviews\": []\n    \n}"
+						},
+						"url": {
+							"raw": "{{url}}/movies/63cbf0e76bcbceebad5e18ad",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"movies",
+								"63cbf0e76bcbceebad5e18ad"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreateMovie",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\":\"Avata\",\n    \"year\":200,\n    \"genres\":[\"Drama\"],\n    \"actors\":[],\n    \"directors\":[\n    ],\n    \"reviews\":[\n        {\n            \"rating\":5,\n            \"review\":\"Good\"\n        },\n        {\n            \"rating\":3,\n            \"review\":\"Nice\"\n        }\n    ]\n}"
+						},
+						"url": {
+							"raw": "{{url}}/movies",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"movies"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Directors",
+			"item": [
+				{
+					"name": "GetAllDirector",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "CreateDirector",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"Christopher Nolan\",\n    \"gender\":\"Male\",\n    \"address\":\"NewYork\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/directors",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"directors"
 							]
 						}
 					},

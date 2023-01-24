@@ -1,4 +1,98 @@
 <div>
+  <ng-template #template>
+    <form [formGroup]="movieForm" (ngSubmit)="onSubmit()">
+      <div class="modal-header">
+        <h4 class="modal-title pull-left">{{editMode?'Edit Movie':'New Movie'}}</h4>
+        <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+          <span aria-hidden="true" class="visually-hidden">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="title">Movie title</label>
+          <input type="text"
+                 class="form-control"
+                 id="title"
+                 formControlName="title"
+                 [readOnly]="editMode"
+                 placeholder="Enter movie title">
+          <div *ngIf="form['title'].invalid && (form['title'].dirty || form['title'].touched)"
+               class="alert alert-danger">
+            <span *ngIf="form['title']?.errors?.['required']">
+              Title required
+            </span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="title">Movie Year</label>
+          <input type="text"
+                 class="form-control"
+                 id="year"
+                 formControlName="year"
+                 [readOnly]="editMode"
+                 placeholder="Enter movie year">
+          <div *ngIf="form['year'].invalid && (form['year'].dirty || form['year'].touched)"
+               class="alert alert-danger">
+            <span *ngIf="form['year']?.errors?.['required']">
+              Year required
+            </span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="title">Director</label>
+          <select type="text"
+                 class="form-control"
+                 id="director"
+                 formControlName="director"
+                 placeholder="Enter Director year">
+            <option *ngFor="let director of directorsModel" [value]="director._id">{{director.name}}</option>
+
+          </select>
+          <div *ngIf="form['director'].invalid && (form['director'].dirty || form['director'].touched)"
+               class="alert alert-danger">
+            <span *ngIf="form['director']?.errors?.['required']">
+              Director required
+            </span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="title">Actor</label>
+          <select type="text"
+                  class="form-control"
+                  id="actor"
+                  formControlName="actor"
+                  placeholder="Enter Actor">
+            <option *ngFor="let actor of actorsModel" [value]="actor._id">{{actor.name}}</option>
+
+          </select>
+          <div *ngIf="form['actor'].invalid && (form['actor'].dirty || form['actor'].touched)"
+               class="alert alert-danger">
+            <span *ngIf="form['actor']?.errors?.['required']">
+              Actor required
+            </span>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="modal-footer">
+        <div>
+          <button type="submit"
+                  [disabled]="!movieForm.valid"
+                  class="btn btn-primary" >
+            {{editMode?'Update':'Save'}}
+          </button>
+          &nbsp;
+          <button type="button" class="btn btn-primary" (click)="closeModal()">Close</button>
+        </div>
+      </div>
+    </form>
+  </ng-template>
+  <button type="button" class="btn-primary btn"  (click)="showNewToDoModal()">
+    New Movie
+  </button>
   <table class="table-striped table-bordered table">
     <thead>
       <tr>
