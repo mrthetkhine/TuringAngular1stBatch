@@ -42,6 +42,7 @@ import { MovieListComponent } from './page/movie-list/movie-list.component';
 import { MovieTwoComponent } from './components/movie-two/movie-two.component';
 import { MovieDetailComponent } from './page/movie-detail/movie-detail.component';
 import { MovieDetailsComponent } from './components/movie-details/movie-details.component';
+import { ReviewComponent } from './components/review/review.component';
 
 @NgModule({
   declarations: [
@@ -76,7 +77,8 @@ import { MovieDetailsComponent } from './components/movie-details/movie-details.
     MovieListComponent,
     MovieTwoComponent,
     MovieDetailComponent,
-    MovieDetailsComponent
+    MovieDetailsComponent,
+    ReviewComponent
   ],
   imports: [
     BrowserModule,

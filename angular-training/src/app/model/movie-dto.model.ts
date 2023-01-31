@@ -15,9 +15,14 @@ export class Director extends Actor
 {
   address:string ='';
 }
+export class Review
+{
+  rating:number =0;
+  review:string ='';
+}
 export class MovieDetails extends MovieDto
 {
   actors:Array<Actor> =[];
   directors: Array<Director> =[];
-  reviews:Array<any> = [];
+  reviews:Array<Review> = [];
 }

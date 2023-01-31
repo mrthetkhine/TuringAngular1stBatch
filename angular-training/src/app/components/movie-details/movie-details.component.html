@@ -14,20 +14,25 @@
         </div>
       </div>
       <div class="movie-box">
+        <h4>Directors</h4>
         <div *ngFor="let director of movieDetails.directors">
           {{director.name}}
         </div>
       </div>
       <div class="movie-box">
+        <h4>Actors</h4>
         <div *ngFor="let actor of movieDetails.actors">
           {{actor.name}}
         </div>
       </div>
       <div class="movie-box">
-        <div *ngFor="let review of movieDetails.reviews">
-          {{review.review}}
-        </div>
+        <app-review *ngFor="let review of movieDetails.reviews"
+                    [review]="review">
+
+        </app-review>
       </div>
+
+
       <div>
         <a class="btn btn-primary" routerLink="/movie-list" routerLinkActive="active" ariaCurrentWhenActive="page">Back</a>
       </div>

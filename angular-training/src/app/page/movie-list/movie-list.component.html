@@ -39,22 +39,35 @@
             </span>
           </div>
         </div>
+
         <div class="form-group">
           <label for="title">Director</label>
           <select type="text"
-                 class="form-control"
-                 id="director"
-                 formControlName="director"
-                 placeholder="Enter Director year">
-            <option *ngFor="let director of directorsModel" [value]="director._id">{{director.name}}</option>
+                  class="form-control"
+                  id="director"
+                  [ngModelOptions]="{standalone: true}"
+                  [(ngModel)]="selectedDirectorIndex"
+                  placeholder="Enter Director year">
+            <option *ngFor="let director of directorsModel;let i=index;" [value]="i">
+              {{director.name}}
+            </option>
 
           </select>
-          <div *ngIf="form['director'].invalid && (form['director'].dirty || form['director'].touched)"
-               class="alert alert-danger">
-            <span *ngIf="form['director']?.errors?.['required']">
-              Director required
-            </span>
-          </div>
+          <button type="button"
+                  class="btn-primary btn"
+                  (click)="addDirector()">
+            Add Director
+          </button>
+          <ng-container formArrayName="directors">
+            <ng-container *ngFor="let directorForm of directors.controls; let i = index">
+              <div class="director" >
+
+                {{directorForm.value.name}}
+                <button type="button" class="btn btn-secondary"
+                  (click)="removeDirector(i)">Remove</button>
+              </div>
+            </ng-container>
+          </ng-container>
         </div>
 
         <div class="form-group">
@@ -62,20 +75,32 @@
           <select type="text"
                   class="form-control"
                   id="actor"
-                  formControlName="actor"
+                  [ngModelOptions]="{standalone: true}"
+                  [(ngModel)]="selectedActorIndex"
                   placeholder="Enter Actor">
-            <option *ngFor="let actor of actorsModel" [value]="actor._id">{{actor.name}}</option>
+            <option *ngFor="let actor of actorsModel;let i=index" [value]="i">{{actor.name}}</option>
 
           </select>
-          <div *ngIf="form['actor'].invalid && (form['actor'].dirty || form['actor'].touched)"
-               class="alert alert-danger">
-            <span *ngIf="form['actor']?.errors?.['required']">
-              Actor required
-            </span>
-          </div>
-        </div>
-      </div>
+          <button type="button"
+                  class="btn-primary btn"
+                  (click)="addActor()">
+            Add Actor
+          </button>
+          <ng-container formArrayName="actors">
+            <ng-container *ngFor="let actorForm of actors.controls; let i = index">
+              <div class="actor" >
 
+                {{actorForm.value.name}}
+                <button type="button" class="btn btn-secondary"
+                        (click)="removeActor(i)">Remove</button>
+              </div>
+            </ng-container>
+          </ng-container>
+        </div>
+
+
+
+      </div>
 
       <div class="modal-footer">
         <div>
@@ -90,7 +115,7 @@
       </div>
     </form>
   </ng-template>
-  <button type="button" class="btn-primary btn"  (click)="showNewToDoModal()">
+  <button type="button" class="btn-primary btn"  (click)="showNeMovieModal()">
     New Movie
   </button>
   <table class="table-striped table-bordered table">
