@@ -13,12 +13,18 @@ import { ToDoService } from './to-do/to-do.service';
 import { MovieModule } from './movie/movie.module';
 import { ActorController } from './movie/actor/actor.controller';
 import { DirectorController } from './movie/director/director.controller';
+import { UserModule } from './user/user.module';
+import { AuthModule } from './auth/auth.module';
+
 
 @Module({
   imports: [
     ToDoModule,
     MongooseModule.forRoot('mongodb://localhost/angular_1st_batch'),
     MovieModule,
+    UserModule,
+    AuthModule,
+
   ],
 
   controllers: [AppController, HostController, LibSpecificController],
