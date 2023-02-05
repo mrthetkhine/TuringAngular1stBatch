@@ -26,7 +26,7 @@ import { NewMovieComponent } from './components/new-movie/new-movie.component';
 import {AnalyticServiceService} from "./services/analytic-service.service";
 import {AnalyticsImplementation} from "./analytics-implementation";
 import {Metric} from "./model/metric.model";
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import { ToDoCountComponent } from './components/to-do-count/to-do-count.component';
 import { FirstPageComponent } from './page/first-page/first-page.component';
 import { SecondPageComponent } from './page/second-page/second-page.component';
@@ -43,6 +43,8 @@ import { MovieTwoComponent } from './components/movie-two/movie-two.component';
 import { MovieDetailComponent } from './page/movie-detail/movie-detail.component';
 import { MovieDetailsComponent } from './components/movie-details/movie-details.component';
 import { ReviewComponent } from './components/review/review.component';
+import {TokenInterceptor} from "./auth/interceptor/TokenInterceptor";
+import { LogoutPageComponent } from './page/logout-page/logout-page.component';
 
 @NgModule({
   declarations: [
@@ -78,7 +80,8 @@ import { ReviewComponent } from './components/review/review.component';
     MovieTwoComponent,
     MovieDetailComponent,
     MovieDetailsComponent,
-    ReviewComponent
+    ReviewComponent,
+    LogoutPageComponent
   ],
   imports: [
     BrowserModule,
@@ -100,7 +103,12 @@ import { ReviewComponent } from './components/review/review.component';
         return new AnalyticServiceService(loggingImplementation);
       }
     },
-    AuthGuard
+    AuthGuard,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })

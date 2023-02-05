@@ -1,5 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {MovieDto} from "../../model/movie-dto.model";
+import {Router} from "@angular/router";
 
 @Component({
   selector: '[app-movie-two]',
@@ -9,9 +10,11 @@ import {MovieDto} from "../../model/movie-dto.model";
 export class MovieTwoComponent {
   @Input()
   movie!:MovieDto;
-
-  movieDetails(movie:MovieDto)
+  constructor(private router:Router) {
+  }
+  movieDetails(event:any)
   {
-    console.log('Movie detail click ',movie);
+    console.log('Movie detail click ',this.movie);
+    this.router.navigate(["/movie-details/"+this.movie._id]);
   }
 }

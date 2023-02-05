@@ -1,11 +1,13 @@
-import { Body, Controller, Delete, Get, Param, Patch, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Patch, Post, UseGuards } from '@nestjs/common';
 import { ActorService } from '../actor.service';
 import { CreateMovieDto } from '../dto/create-movie.dto';
 import { CreateActorDto } from '../dto/create-actor.dto';
 import { UpdateMovieDto } from '../dto/update-movie.dto';
 import { UpdateActorDto } from '../dto/udpate-actor.dto';
+import { AuthGuard } from '@nestjs/passport';
 
 @Controller('/api/actors')
+@UseGuards(AuthGuard('jwt'))
 export class ActorController {
 
   constructor(private actorService:ActorService) {

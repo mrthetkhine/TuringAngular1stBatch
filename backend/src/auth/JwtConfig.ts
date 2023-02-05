@@ -1,0 +1,1 @@
+export const SECERET_KEY = "'E/w*^(GqKcEO*1I'";

@@ -346,12 +346,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/actors",
+							"raw": "{{url}}/actors/63cd2bbf7bad73bff4219373",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"actors"
+								"actors",
+								"63cd2bbf7bad73bff4219373"
 							]
 						}
 					},
@@ -397,7 +398,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\":\"Kate WinSlect\",\n    \"gender\":\"Female\"\n}"
+							"raw": "{\n    \"name\":\"Katewin Slect\",\n    \"gender\":\"Female\"\n}"
 						},
 						"url": {
 							"raw": "{{url}}/actors/63cd2dfe39a93538253d7b8d",
@@ -449,7 +450,13 @@
 					"name": "GetAllMovies",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwic3ViIjoiNjNkZTVjOWNmOWY4OTI0MThjOTRmZTBlIiwiaWF0IjoxNjc1NjAwMzEzLCJleHAiOjE2NzgxOTIzMTN9.Wpl9CMTZghOjH_TRIy6IlgqiS6ny_9m47_jm_K498Ns",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "{{url}}/movies",
 							"host": [
@@ -466,7 +473,13 @@
 					"name": "GetMovie",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwic3ViIjoiNjNkZTVjOWNmOWY4OTI0MThjOTRmZTBlIiwiaWF0IjoxNjc1NjAwMzEzLCJleHAiOjE2NzgxOTIzMTN9.Wpl9CMTZghOjH_TRIy6IlgqiS6ny_9m47_jm_K498Ns",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "{{url}}/movies/63cbf0e76bcbceebad5e18ad",
 							"host": [
@@ -521,7 +534,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"title\":\"Avata\",\n    \"year\":200,\n    \"genres\":[\"Drama\"],\n    \"actors\":[],\n    \"directors\":[\n    ],\n    \"reviews\":[\n        {\n            \"rating\":5,\n            \"review\":\"Good\"\n        },\n        {\n            \"rating\":3,\n            \"review\":\"Nice\"\n        }\n    ]\n}"
+							"raw": "{\n    \"title\":\"Avata-2\",\n    \"year\":200,\n    \"genres\":[\"Drama\"],\n    \"actors\":[\"63cd2bbf7bad73bff4219373\"],\n    \"directors\":[\n        \"63cd34830e03eb5cbfdbbee3\"\n    ],\n    \"reviews\":[\n        {\n            \"rating\":5,\n            \"review\":\"Good\"\n        },\n        {\n            \"rating\":3,\n            \"review\":\"Nice\"\n        }\n    ]\n}"
 						},
 						"url": {
 							"raw": "{{url}}/movies",
@@ -544,7 +557,16 @@
 					"name": "GetAllDirector",
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": "{{url}}/directors",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"directors"
+							]
+						}
 					},
 					"response": []
 				},
@@ -570,6 +592,69 @@
 							],
 							"path": [
 								"directors"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\":\"admin\",\n    \"password\":\"admin\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/auth/register",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\":\"admin\",\n    \"password\":\"admin\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"auth",
+								"login"
 							]
 						}
 					},

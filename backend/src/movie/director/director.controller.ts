@@ -1,12 +1,14 @@
-import { Body, Controller, Delete, Get, Param, Patch, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Patch, Post, UseGuards } from '@nestjs/common';
 import { ActorService } from '../actor.service';
 import { CreateActorDto } from '../dto/create-actor.dto';
 import { UpdateActorDto } from '../dto/udpate-actor.dto';
 import { DirectorService } from '../director.service';
 import { CreateDirectorDto } from '../dto/create-director.dto';
 import { UpdateDirectorDto } from '../dto/update-director.dto';
+import { AuthGuard } from '@nestjs/passport';
 
 @Controller('/api/directors')
+@UseGuards(AuthGuard('jwt'))
 export class DirectorController {
   constructor(private directorService:DirectorService) {
   }

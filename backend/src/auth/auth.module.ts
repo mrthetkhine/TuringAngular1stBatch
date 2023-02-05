@@ -8,17 +8,20 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { User,UserSchema } from '../schemas/user.schema';
 import { UserService } from '../user/user.service';
 import { LocalStrategy } from './local.auth';
+import { SECERET_KEY } from './JwtConfig';
+import { JwtStrategy } from './jwt.strategy';
+import { JwtGuard } from './jwt.guard';
 
 @Module({
   imports: [
     UserModule, PassportModule,
     JwtModule.register({
-    secret: 'E/w*^(GqKcEO*1I',
-    signOptions: { expiresIn: '60s' },
+    secret: SECERET_KEY,
+    signOptions: { expiresIn: '30d' },
   }),
     MongooseModule.forFeature([{ name: User.name, schema: UserSchema }])
   ],
-  providers: [AuthService,UserService,LocalStrategy],
+  providers: [AuthService,UserService,LocalStrategy,JwtStrategy,JwtGuard],
   controllers: [AuthController]
 })
 export class AuthModule {}

@@ -301,11 +301,14 @@
  Welcome
   <nav >
     <ul class="nav">
-      <li class="nav-item"><a class="nav-link" routerLink="/login-page" routerLinkActive="active" ariaCurrentWhenActive="page">Login</a></li>
+      <li *ngIf="!authService.isAuthenticated()"
+          class="nav-item"><a class="nav-link" routerLink="/login-page" routerLinkActive="active" ariaCurrentWhenActive="page">Login</a></li>
       <li class="nav-item"><a class="nav-link" routerLink="/admin-page" routerLinkActive="active" ariaCurrentWhenActive="page">Admin</a></li>
       <li class="nav-item"><a class="nav-link" routerLink="/first-page" routerLinkActive="active" ariaCurrentWhenActive="page">First Component</a></li>
       <li class="nav-item"><a class="nav-link" routerLink="/second-page" routerLinkActive="active" ariaCurrentWhenActive="page">To Do List Page</a></li>
       <li class="nav-item"><a class="nav-link" routerLink="/movie-list" routerLinkActive="active" ariaCurrentWhenActive="page">Movie List</a></li>
+      <li *ngIf="authService.isAuthenticated()"
+          class="nav-item"><a class="nav-link" routerLink="/logout" routerLinkActive="active" ariaCurrentWhenActive="page">Logout</a></li>
     </ul>
   </nav>
 </div>

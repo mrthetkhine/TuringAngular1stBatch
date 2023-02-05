@@ -21,12 +21,12 @@ import { QueryToDoDto } from './dto/query-to-do.dto';
 import { HttpExceptionFilter } from '../http-exception/http-exception.filter';
 import { JoiValidationPipe } from '../pipes/joi-validation/joi-validation.pipe';
 import { DtoValidationPipe } from '../pipes/dto-validation/dto-validation.pipe';
-import { AuthGuard } from '../auth/auth.guard';
+import { JwtGuard } from '../auth/jwt.guard';
 import { LoggingInterceptor } from '../logging/logging.interceptor';
 import { ToDoDecorator } from './to-do.decorator';
 
 @UseInterceptors(LoggingInterceptor)
-//@UseGuards(AuthGuard)
+//@UseGuards(JwtGuard)
 //@UseFilters(new HttpExceptionFilter())
 @Controller('api/to-do')
 export class ToDoController {
